@@ -3,7 +3,6 @@
 #### Informações básicas
 
 - Desenvolvido com Apache/2.4.39, PHP 7.3.7, Laravel 7.29.3, MariaDB 10.3.16 e Composer
-- Criar database `laravel_um` ou alterar o nome do banco de dados no arquivo `.env`
 
 Seguir os passos para instalação:
 
@@ -14,6 +13,13 @@ Seguir os passos para instalação:
 \$ cd laravel-um/backend
 
 \$ composer install
+
+#### arquivo .env
+
+- Criar database `laravel_um`, e se necessário alterar os dados de conexão no arquivo
+- No linux, estas duas informações foram reconhecidas quando colocadas entre aspas duplas: `DB_USERNAME="username"` e `DB_PASSWORD="pass"`
+- Se alguma alteração nesse arquivo for feita, rodar os comandos `php artisan config:clear` 
+e `php artisan cache:clear`
 
 ### Migrate
 
@@ -29,12 +35,6 @@ Seguir os passos para instalação:
 
 ![Diagrama](laravel-um-diagrama.png)
 
-### Habilitar o passport (usado para autenticação)
-
-\$ php artisan passport:install
-
-\$ php artisan passport:keys --force
-
 ### Iniciar aplicação
 
 \$ php artisan serve
@@ -47,19 +47,9 @@ Seguir os passos para instalação:
 
 \$ composer dump-autoload
 
-### Testes
-
-Um teste simples foi criado, para rodá-lo basta executar um dos comandos:
-
-\$ php artisan test
-
-\$ composer test
-
 ## Documentação das rotas da API
 
 \$ php artisan route:list
-
-Para visualizar a documentação completa das rotas elaborada no postman, acesse o link [Postman](https://documenter.getpostman.com/view/1636800/TVCY5rSw)
 
 > Obs:
 
@@ -68,16 +58,10 @@ Para visualizar a documentação completa das rotas elaborada no postman, acesse
 
 | Method | URI                                          | Action                                   |
 | ------ | -------------------------------------------- | ---------------------------------------- |
-| POST   | api/register                                 | AuthController@register                  |
-| POST   | api/login                                    | AuthController@login                     |
-| POST   | api/logout                                   | AuthController@logout                    |
-| GET    | api/users                                    | UserController@index                     |
-| GET    | api/users/{id}                               | UserController@show                      |
-| PUT    | api/users/{id}                               | UserController@put                       |
-| DELETE | api/users/{id}                               | UserController@delete                    |
-| GET    | api/operations                               | OperationController@index                |
-| GET    | api/account_transactions/user                | AccountTransactionController@listAccount |
-| GET    | api/account_transactions/totalizer/{user_id} | AccountTransactionController@totalizer   |
-| GET    | api/account_transactions/report              | AccountTransactionController@report      |
-| POST   | api/account_transactions                     | AccountTransactionController@store       |
-| DELETE | api/account_transactions/{id}/{user_id}      | AccountTransactionController@destroy     |
+| GET    | api/customers                                    | CustomerController@index                     |
+| GET    | api/customers/{id}                               | CustomerController@show                      |
+| PUT    | api/customers/{id}                               | CustomerController@update                       |
+| DELETE | api/customers/{id}                               | CustomerController@destroy                    |
+| GET    | api/plans                               | CustomerController@index                |
+| GET    | api/states                               | CustomerController@index                |
+| GET    | api/cities                               | CustomerController@index                |
