@@ -2,11 +2,19 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\CustomRequest;
 use Illuminate\Validation\Rule;
 
 class CustomerRequest extends CustomRequest
 {
+    protected $id;
+
+    public function __construct(Request $request)
+    {
+        $this->id = (int) $request->route('id');
+    }
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -36,15 +44,16 @@ class CustomerRequest extends CustomRequest
                 ];
             case 'PUT':
                 return [
-                    //'name'          =>  ['required'],
-                    'email'         =>  ['email', Rule::unique('customers', 'email')->ignore($this->customer)],
-                    //'phone_number'  =>  ['required'],
-                    //'born_at'       =>  ['date']
+                    'email'     =>  ['email', Rule::unique('customers')->ignore($this->id)],
+                    'born_at'   =>  ['date']
                 ];
             default:
                 break;
         }
     }
+
+    // Rule::unique('customers')->ignore($this->request->get('id'))
+    
 
     public function messages()
     {

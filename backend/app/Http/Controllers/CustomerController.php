@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Repositories\Interfaces\CustomerRepositoryInterface;
 use App\Services\CustomerService;
 use App\Http\Requests\CustomerRequest;
@@ -55,11 +54,13 @@ class CustomerController extends Controller
 			}
 			$this->customerRepository->updateCustomer($id, $request->all());
 			return response()->json(['message' => 'Registro atualizado com sucesso!'], 201);
-		} catch(Exception $e){
-			throw new RegisterNotFoundException($e);
+		} catch(RegisterNotFoundException $e){
+			//dd($e->getMessage());
+			//throw new RegisterNotFoundException($e);
+			return response()->json(['message' => $e->getMessage()], 400);
 		}
 	}
-    
+
     public function destroy($id)
 	{
 		try {

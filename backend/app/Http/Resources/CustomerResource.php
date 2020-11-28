@@ -20,7 +20,7 @@ class CustomerResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'phone_number' => $this->phone_number,
-            'born_at' => Carbon::parse($this->born_at)->format('d/m/Y'),
+            'born_at' => Carbon::parse($this->born_at)->format('Y-m-d'),
             'state_id' => $this->state_id,
             'state_name' => $this->state->name,
             'city_id' => $this->city_id,
