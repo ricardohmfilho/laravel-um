@@ -76,9 +76,9 @@ $ php artisan route:list
 | GET    | api/customers/{id}                               | CustomerController@show                      |
 | PUT    | api/customers/{id}                               | CustomerController@update                       |
 | DELETE | api/customers/{id}                               | CustomerController@destroy                    |
-| GET    | api/plans                               | CustomerController@index                |
-| GET    | api/states                               | CustomerController@index                |
-| GET    | api/cities                               | CustomerController@index                |
+| GET    | api/plans                               | PlanController@index                |
+| GET    | api/states                               | StateController@index                |
+| GET    | api/cities                               | CityController@index                |
 
 ---
 
