@@ -88,6 +88,6 @@ $ php artisan route:list
 
 Desenvolvido com Angular 10 e Bootstrap 4.
 
-No navegador basta acessar a raíz do projeto `laravel-um` e acessar a pasta `/frontend`. 
+No navegador basta acessar a raíz do projeto `laravel-um` e acessar a pasta `/frontend`. O código do projeto está na pasta `/frontend/code` (exceto `node_modules`).
 
 Lembrando que o servidor do laravel precisa estar ativo.

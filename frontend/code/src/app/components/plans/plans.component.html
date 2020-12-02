@@ -1,0 +1,22 @@
+<div>
+    <h1>Planos</h1>
+
+    <div class="table-container">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plan of plan_data">
+                    <td>{{plan.id}}</td>
+                    <td>{{plan.name}}</td>
+                    <td>R$ {{plan.value}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

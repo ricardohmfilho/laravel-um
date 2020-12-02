@@ -1,0 +1,65 @@
+<div class="form-container">
+
+  <ng-template [ngIf]="is_new" [ngIfElse]="editCustomer">
+    <h3>Novo cliente</h3>
+  </ng-template>
+  
+  <ng-template #editCustomer>
+    <h3>Editar cliente</h3>
+  </ng-template>
+
+  <hr />
+
+  <form autocomplete="off" novalidate [formGroup]="postData" (ngSubmit)="onSubmit()">
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="input1">Nome *</label>
+        <input type="text" class="form-control" id="input1" placeholder="Nome" formControlName="name" name="name" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="input2">E-mail *</label>
+        <input type="text" class="form-control" id="input2" placeholder="E-mail" formControlName="email" name="email" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="input3">Telefone *</label>
+        <input type="text" class="form-control" id="input3" placeholder="(xx) xxxxxxx" formControlName="phone_number" name="phone_number" required />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="input4">Data Nasc. *</label>
+        <input type="text" class="form-control" id="input4" placeholder="aaaa-mm-dd" formControlName="born_at" name="born_at" required />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="input5">Estado *</label>
+        <select class="form-control" name="state_id" 
+                    id="inputPosition3" 
+                    formControlName="state_id" 
+                    required>
+            <option [value]="item.id" *ngFor="let item of state_data">{{item.name}}</option>
+          </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="input6">Cidade *</label>
+        <select class="form-control" name="city_id" 
+                    id="inputPosition3" 
+                    formControlName="city_id" 
+                    required>
+            <option [value]="item.id" *ngFor="let item of city_data">{{item.name}}</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="text-right mrg-top-30">
+      <button type="submit" class="btn btn-primary" [disabled]="!postData.valid || postData.pristine">
+        <i class="fa fa-save"></i> &nbsp; Salvar  
+      </button>
+    </div>
+  </form>
+
+</div>
